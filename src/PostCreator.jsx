@@ -1,51 +1,58 @@
 import { useState, useEffect } from "react";
+
 const PostCreator = () => {
-  const [Post, setPost] = useState([]);
-  const [Titulo, setTitulo] = useState("");
-  const [Parrafo, setParrafo] = useState("");
-  const [id, setID] = useState(0);
+
+  const [posts, setPosts] = useState(() => {
+    const storedPosts = JSON.parse(localStorage.getItem('posts'));
+    return storedPosts || [];
+  });
+
+  const [title, setTitle] = useState('');
+  const [paragraph, setParagraph] = useState('');
 
   useEffect(() => {
-    const json = JSON.stringify(Post);
-    localStorage.setItem("Post", json);
-  }, [Post]);
+    localStorage.setItem('posts', JSON.stringify(posts));
+  }, [posts]);
 
-  const handleTitle = (e) => {
-    setTitulo(e.target.value);
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
   };
 
-  const handleParagraph = (e) => {
-    setParrafo(e.target.value);
+  const handleParagraphChange = (e) => {
+    setParagraph(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nuevoPost = { id: id, titulo: Titulo, parrafo: Parrafo };
-    setPost([...Post, nuevoPost]);
-    setTitulo("");
-    setParrafo("");
-    setID(id + 1);
-    console.log(Post);
-  };
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={Titulo}
-          onChange={handleTitle}
-          type="text"
-          placeholder="Title"
-        ></input>
 
-        <input
-          value={Parrafo}
-          onChange={handleParagraph}
-          type="text"
-          placeholder="Paragraph"
-        ></input>
-        <input type="submit" value="ingresar" hidden />
-      </form>
-    </>
+    const newPost = {
+      id,
+      title,
+      paragraph
+    };
+
+    setPosts(prevPosts => [...prevPosts, newPost]);
+
+    setTitle('');
+    setParagraph('');
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+
+      <input
+        value={title}
+        onChange={handleTitleChange}
+      />
+
+      <input
+        value={paragraph}
+        onChange={handleParagraphChange}
+      />
+
+      <button type="submit">Submit</button>
+
+    </form>
   );
 };
 
