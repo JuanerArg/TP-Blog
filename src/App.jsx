@@ -1,11 +1,13 @@
 import React from 'react'
 import PostCreator from './PostCreator';
-
+import { Router, Route } from 'react-router-dom';
 function App() {
   return (
     <>
       <h1>Hola Mundo</h1>
-      <p><a href="/PostCreator">PostCreator</a></p>
+      <Router>
+        <Route path="/PostCreator" element={<PostCreator />}></Route>
+      </Router>
     </>
   );
 }
