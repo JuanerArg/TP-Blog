@@ -6,9 +6,12 @@ const PostCreator = () => {
   const [id, setID] = useState(0);
 
   useEffect(() => {
-    const json = JSON.stringify(Post);
-    localStorage.setItem("Post", json);
-  }, [Post]);
+    const json = localStorage.getItem("Posts");
+    if (json) {
+      const newPost = JSON.parse(json);
+      setPost(newPost);
+    }
+  }, [])
 
   const handleTitle = (e) => {
     setTitulo(e.target.value);
@@ -21,7 +24,9 @@ const PostCreator = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const nuevoPost = { id: id, titulo: Titulo, parrafo: Parrafo };
-    setPost([...Post, nuevoPost]);
+    const newPost = [...Post, nuevoPost];
+    setPost(newPost)
+    localStorage.setItem("Posts", JSON.stringify(newPost));
     setTitulo("");
     setParrafo("");
     setID(id + 1);
