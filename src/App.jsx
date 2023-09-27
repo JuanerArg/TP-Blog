@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <h1>Hola Mundo</h1>
-      <button><a href='/PostCreator'></a></button>
+      <button><a href='/PostCreator'>Creador de Posts</a></button>
     </>
   );
 }

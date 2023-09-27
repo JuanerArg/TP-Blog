@@ -6,9 +6,6 @@ import PostCreator from "./PostCreator"
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,8 +19,8 @@ const router = createBrowserRouter([
 
 ]);
 
-root.render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>
+  </React.StrictMode>
 );
