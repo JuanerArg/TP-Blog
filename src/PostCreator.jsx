@@ -47,3 +47,5 @@ const PostCreator = () => {
         </>
     )
 }
+
+export default PostCreator
