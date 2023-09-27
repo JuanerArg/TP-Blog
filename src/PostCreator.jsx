@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-
 const PostCreator = () => {
+  const [Post, setPost] = useState([]);
   const [Titulo, setTitulo] = useState("");
   const [Parrafo, setParrafo] = useState("");
   const [id, setID] = useState(0);
 
-  const handleNewPost = localStorage.getItem("handleNewPost");
+  useEffect(() => {
+    const json = JSON.stringify(Post);
+    localStorage.setItem("Post", json);
+  }, [Post]);
 
   const handleTitle = (e) => {
     setTitulo(e.target.value);
@@ -18,12 +21,12 @@ const PostCreator = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const nuevoPost = { id: id, titulo: Titulo, parrafo: Parrafo };
-    handleNewPost(nuevoPost);
+    setPost([...Post, nuevoPost]);
     setTitulo("");
     setParrafo("");
     setID(id + 1);
+    console.log(Post);
   };
-
   return (
     <>
       <form onSubmit={handleSubmit}>
