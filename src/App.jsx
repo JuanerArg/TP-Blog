@@ -2,18 +2,29 @@ import React, { useEffect, useState } from 'react'
 import PostCreator from './PostCreator';
 import PostPage from './PostPage';
 import { Router, Route, Link } from 'react-router-dom';
-function App() {
 
-  const [Post, setPost] = useState(() => {
+function App() {
+  const [Post, setPost] = useState([]);
+
+  useEffect(() => {
     const json = localStorage.getItem("Post");
-    return json ? JSON.parse(json) : [];
-  });
+    if (json) {
+      const newPost = JSON.parse(json);
+      setPost(newPost);
+    }
+  }, [])
+
+  const handleNewPost = (newPost) => {
+    setPost([...Post, newPost]);
+  };
 
   return (
     <>
       <h1>Hola Mundo</h1>
       <button>
-        <Link to="/PostCreator">Crear Post</Link>
+        <Link to="/PostCreator" onClick={() => { localStorage.setItem("handleNewPost", handleNewPost); }}>
+          Crear Post
+        </Link>
       </button>
       <ul>
         {Post.map((post, id) => (
@@ -28,4 +39,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
