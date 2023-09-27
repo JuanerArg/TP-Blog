@@ -5,7 +5,7 @@ const ComentCreator = () => {
     const [Parrafo, setParrafo] = useState("");
 
     useEffect(() => {
-        const json = localStorage.getItem("Comentario");
+        const json = localStorage.getItem("Comentarios");
         if (json) {
             const newComentario = JSON.parse(json);
             setComentario(newComentario);
