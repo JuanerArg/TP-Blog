@@ -6,7 +6,7 @@ function App() {
     <>
       <h1>Hola Mundo</h1>
       <Router>
-        <Link to="/PostCreator">Crear Post</Link>
+        <Route path="/PostCreator" element={<PostCreator />}>Crear Post</Route>
       </Router>
     </>
   );
