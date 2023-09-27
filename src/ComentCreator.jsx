@@ -1,6 +1,6 @@
 import { useState } from "react"
 const ComentCreator = () => {
-    const [Comentario, setComentariontario] = useState([]);
+    const [Comentario, setComentario] = useState([]);
     const [Autor, setAutor] = useState("");
     const [Parrafo, setParrafo] = useState("");
 
