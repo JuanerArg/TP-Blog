@@ -4,14 +4,10 @@ import PostPage from './PostPage';
 import { Router, Route, Link } from 'react-router-dom';
 function App() {
 
-  const [Post, setPost] = useState([]);
-  useEffect(() => {
-    const json =  localStorage.getItem("Post");
-    if(json){
-      const newPost = JSON.parse(json);
-      setPost(newPost);
-    }
-  },[])
+  const [Post, setPost] = useState(() => {
+    const json = localStorage.getItem("Post");
+    return json ? JSON.parse(json) : [];
+  });
 
   return (
     <>
@@ -21,7 +17,7 @@ function App() {
       </button>
       <ul>
         {Post.map((post, id) => (
-          <Link to="/PostPage" onClick={() => {localStorage.setItem("id", id);}}>
+          <Link to="/PostPage" onClick={() => { localStorage.setItem("id", id); }}>
             <li key={id}>
               <strong>{post.titulo}</strong>
             </li>
