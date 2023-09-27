@@ -1,15 +1,29 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
 import App from "./App";
-import { HashRouter } from 'react-router-dom'
+import PostCreator from "./PostCreator"
 
-import { BrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />
+  },
+
+  {
+    path: "/PostCreator",
+    element: <PostCreator />
+  }
+
+]);
+
 root.render(
-  <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </React.StrictMode>
-);
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>
+)
