@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const PostCreator = () => {
   const [Post, setPost] = useState([]);
   const [Titulo, setTitulo] = useState("");
   const [Parrafo, setParrafo] = useState("");
   const [id, setID] = useState(0);
+
+  useEffect(() => {
+    const json = JSON.stringify(Post);
+    localStorage.setItem("Post", json);
+  }, [Post]);
 
   const handleTitle = (e) => {
     setTitulo(e.target.value);
@@ -15,14 +20,12 @@ const PostCreator = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nuevoPost = {id: id, titulo: Titulo, parrafo: Parrafo };
+    const nuevoPost = { id: id, titulo: Titulo, parrafo: Parrafo };
     setPost([...Post, nuevoPost]);
     setTitulo("");
     setParrafo("");
     setID(id + 1);
     console.log(Post);
-    const json = JSON.stringify(Post);
-    localStorage.setItem("Post", json);
   };
   return (
     <>
