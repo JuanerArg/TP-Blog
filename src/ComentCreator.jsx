@@ -1,11 +1,11 @@
 import { useState } from "react"
-const PostCreator = () => {
-    const [Post, setPost] = useState([]);
-    const [Titulo, setTitulo] = useState("");
+const ComentCreator = () => {
+    const [Comentario, setComentariontario] = useState([]);
+    const [Autor, setAutor] = useState("");
     const [Parrafo, setParrafo] = useState("");
 
-    const handleTitle = (e) => {
-        setTitulo(e.target.value)
+    const handleAutor = (e) => {
+        setAutor(e.target.value)
     }
 
     const handleParagraph = (e) => {
@@ -14,19 +14,19 @@ const PostCreator = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const nuevoPost = { titulo: Titulo, parrafo: Parrafo };
-        setPost([...Post, nuevoPost]);
-        setTitulo("");
+        const nuevoComentario = { autor: Autor, parrafo: Parrafo };
+        setComentario([...Comentario, nuevoComentario]);
+        setAutor("");
         setParrafo("");
     }
     return (
         <>
             <form onSubmit={handleSubmit}>
                 <input
-                    value={Titulo}
-                    onChange={handleTitle}
+                    value={Autor}
+                    onChange={handleAutor}
                     type="text"
-                    placeholder="Title"
+                    placeholder="Autor"
                 >
                 </input>
 
@@ -40,7 +40,7 @@ const PostCreator = () => {
                 <input type="submit" value="ingresar" hidden />
             </form>
         </>
-        /*Esto es para generar los Posts Uli:
+        /*Esto es para generar los Comentarios Uli:
         <ul>
                 {Post.map((post, i) => (
                     <li key={i}><strong>{post.titulo}</strong>{post.parrafo}</li>
@@ -50,4 +50,4 @@ const PostCreator = () => {
     )
 }
 
-export default PostCreator
+export default ComentCreator
