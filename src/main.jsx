@@ -10,8 +10,15 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 const router = createBrowserRouter([
-  { path: "/", element: <App /> },
-  { path: "/PostCreator", element: <PostCreator /> }
+  {
+    path: "/",
+    element: <App />
+  },
+
+  {
+    path: "/PostCreator",
+    element: <PostCreator />
+  }
 ]);
 
 root.render(
