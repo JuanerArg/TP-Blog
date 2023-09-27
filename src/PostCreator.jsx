@@ -41,13 +41,13 @@ const PostCreator = () => {
                 <input type="submit" value="ingresar" hidden />
             </form>
 
-            {/* <ul>
+            <ul>
                 {
                     Post.map((post, i) => (
                         <li key={i}><strong>{post.titulo}</strong>{post.parrafo}</li>
                     ))
                 }
-            </ul> */}
+            </ul>
         </>
     )
 }
