@@ -3,6 +3,9 @@ import PostCreator from './PostCreator';
 import PostPage from './PostPage';
 import { Router, Route, Link } from 'react-router-dom';
 function App() {
+  const json =  localStorage.getItem("Post");
+  const Post = JSON.parse(json);
+
   return (
     <>
       <h1>Hola Mundo</h1>

@@ -19,6 +19,8 @@ const PostCreator = () => {
     setTitulo("");
     setParrafo("");
     console.log(Post);
+    const json = JSON.stringify(Post);
+    localStorage.setItem("Post", json);
   };
   return (
     <>
