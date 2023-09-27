@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PostCreator from './PostCreator';
 import PostPage from './PostPage';
 import { Router, Route, Link } from 'react-router-dom';
 function App() {
-  
+
   const [Post, setPost] = useState([]);
   useEffect(() => {
     const json =  localStorage.getItem("Post");
