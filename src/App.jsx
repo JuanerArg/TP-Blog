@@ -19,12 +19,13 @@ function App() {
       <button>
         <Link to="/PostCreator">Crear Post</Link>
       </button>
-      <Link to="/PostPage">Aca iria el post vamos a tener que hacer que esto se genere con un map o algo por el estilo</Link>
       <ul>
-        {Post.map((post, i) => (
-          <li key={i}>
-            <strong>{post.titulo}</strong>
-          </li>
+        {Post.map((post, id) => (
+          <Link to="/PostPage" onClick={() => {localStorage.setItem("id", id);}}>
+            <li key={id}>
+              <strong>{post.titulo}</strong>
+            </li>
+          </Link>
         ))}
       </ul>
     </>
