@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 import PostCreator from "./PostCreator"
+import PostPage from "./PostPage";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
   {
     path: "/PostCreator",
     element: <PostCreator />
+  },
+
+  {
+    path: "/PostPage",
+    element: <PostPage />
   }
 
 ]);
