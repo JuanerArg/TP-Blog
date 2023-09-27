@@ -39,14 +39,12 @@ const ComentCreator = () => {
                 </input>
                 <input type="submit" value="ingresar" hidden />
             </form>
-        </>
-        /*Esto es para generar los Comentarios Uli:
-        <ul>
+            <ul>
                 {Post.map((post, i) => (
                     <li key={i}><strong>{post.titulo}</strong>{post.parrafo}</li>
                 ))}
             </ul>
-        */
+        </>
     )
 }
 
