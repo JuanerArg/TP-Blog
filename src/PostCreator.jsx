@@ -38,15 +38,6 @@ const PostCreator = () => {
         ></input>
         <input type="submit" value="ingresar" hidden />
       </form>
-
-      <ul>
-        {Post.map((post, i) => (
-          <li key={i}>
-            <strong>{post.titulo}</strong>
-            {post.parrafo}
-          </li>
-        ))}
-      </ul>
     </>
   );
 };

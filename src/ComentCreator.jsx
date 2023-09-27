@@ -39,7 +39,6 @@ const ComentCreator = () => {
                 </input>
                 <input type="submit" value="ingresar" hidden />
             </form>
-
         </>
     )
 }
