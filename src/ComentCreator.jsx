@@ -23,8 +23,9 @@ const ComentCreator = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const nuevoComentario = { autor: Autor, parrafo: Parrafo };
-        setComentario([...Comentario, nuevoComentario]);
-        localStorage.setItem("Comentarios", JSON.stringify(newComentario));
+        const newComentario = [...Comentario, nuevoComentario];
+        setComentario(newComentario);
+        localStorage.setItem("Comentarios", JSON.stringify(newComentario)); // Aquí está el cambio
         setAutor("");
         setParrafo("");
     }
