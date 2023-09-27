@@ -5,9 +5,9 @@ function App() {
   return (
     <>
       <h1>Hola Mundo</h1>
-      <routes>
-        <route exact path="/PostCreator" component={PostCreator} />
-      </routes>
+      <Routes>
+        <Route path="/PostCreator" component={<PostCreator />} />
+      </Routes>
     </>
   );
 }
