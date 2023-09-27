@@ -1,8 +1,16 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 const ComentCreator = () => {
     const [Comentario, setComentario] = useState([]);
     const [Autor, setAutor] = useState("");
     const [Parrafo, setParrafo] = useState("");
+
+    useEffect(() => {
+        const json = localStorage.getItem("Comentario");
+        if (json) {
+            const newComentario = JSON.parse(json);
+            setComentario(newComentario);
+        }
+    }, [])
 
     const handleAutor = (e) => {
         setAutor(e.target.value)
