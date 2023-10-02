@@ -8,12 +8,13 @@ const PostPage = () => {
   const [Post, setPost] = useState([]);
 
   useEffect(() => {
-    const newId = localStorage.getItem("Id");
-    setId(newId);
+    const jsonId = localStorage.getItem("Id");
     const json = localStorage.getItem("Post");
-    if (json) {
+    if (json && jsonId) {
       const newPost = JSON.parse(json);
       setPost(newPost);
+      const newId = JSON.parse(jsonId);
+      setId(newId);
     }
   }, [])
 

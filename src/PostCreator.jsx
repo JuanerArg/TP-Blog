@@ -6,7 +6,7 @@ const PostCreator = () => {
   const [id, setID] = useState(0);
 
   useEffect(() => {
-    const json = localStorage.getItem("Posts");
+    const json = localStorage.getItem("Post");
     const jsonId = localStorage.getItem("Ids");
     if (json && jsonId) {
       const newPost = JSON.parse(json);
@@ -29,7 +29,7 @@ const PostCreator = () => {
     const nuevoPost = { id: id, titulo: Titulo, parrafo: Parrafo };
     const newPost = [...Post, nuevoPost];
     setPost(newPost);
-    localStorage.setItem("Posts", JSON.stringify(Post));
+    localStorage.setItem("Post", JSON.stringify(Post));
     let newId = id + 1;
     setID(newId)
     localStorage.setItem("Ids", JSON.stringify(id));
