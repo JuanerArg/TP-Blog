@@ -25,12 +25,12 @@ function App() {
         <Link to="/PostCreator">Crear Post</Link>
       </button>
       <ul>
-        {Post.map((Post, id) => (
-          <Link to="/PostPage">
-            <li key={id}>
+        {Post.map((Post, index) => (
+          <li key={index}>
+            <Link to={`/PostPage/${index}`}>
               <strong>{Post.titulo}</strong>
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </>
