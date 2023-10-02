@@ -8,7 +8,7 @@ const PostPage = () => {
   const [Post, setPost] = useState([]);
 
   useEffect(() => {
-    const newId = Number(localStorage.getItem("id"));
+    const newId = parseInt(localStorage.getItem("id"));
     setId(newId);
     const json = localStorage.getItem("Post");
     if (json) {

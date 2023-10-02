@@ -7,8 +7,11 @@ const PostCreator = () => {
 
   useEffect(() => {
     const json = localStorage.getItem("Posts");
-    if (json) {
+    const jsonId = localStorage.getItem("Ids");
+    if (json && jsonId) {
       const newPost = JSON.parse(json);
+      const newId = JSON.parse(jsonId);
+      setID(newId);
       setPost(newPost);
     }
   }, [])
@@ -25,12 +28,15 @@ const PostCreator = () => {
     e.preventDefault();
     const nuevoPost = { id: id, titulo: Titulo, parrafo: Parrafo };
     const newPost = [...Post, nuevoPost];
-    setPost(newPost)
-    localStorage.setItem("Posts", JSON.stringify(newPost));
+    setPost(newPost);
+    localStorage.setItem("Posts", JSON.stringify(Post));
+    let newId = id + 1;
+    setID(newId)
+    localStorage.setItem("Ids", JSON.stringify(id));
     setTitulo("");
     setParrafo("");
-    setID(id + 1);
     console.log(Post);
+    console.log(id)
   };
   return (
     <>
