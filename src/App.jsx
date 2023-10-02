@@ -8,7 +8,7 @@ function App() {
   const [id, setID] = useState(0);
 
   useEffect(() => {
-    const json = localStorage.getItem("Post");
+    const json = localStorage.getItem("Posts");
     const jsonID = localStorage.getItem("Ids")
     if (json && jsonID) {
       const newPost = JSON.parse(json);
