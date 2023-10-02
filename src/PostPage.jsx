@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 
 const PostPage = () => {
 
-  const [id, setId] = useState();
+  const [Id, setId] = useState();
   const [Post, setPost] = useState([]);
 
   useEffect(() => {
-    const newId = parseInt(localStorage.getItem("id"));
+    const newId = localStorage.getItem("Id");
     setId(newId);
     const json = localStorage.getItem("Post");
     if (json) {
@@ -18,7 +18,7 @@ const PostPage = () => {
   }, [])
 
   //console.log(id);
-  const onlyPost = Post.filter((post) => post.id === id)
+  const onlyPost = Post.filter((Post) => Post.id === Id)
   const post = onlyPost[0];
   return (
     <>

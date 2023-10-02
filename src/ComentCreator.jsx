@@ -5,7 +5,7 @@ const ComentCreator = () => {
     const [Parrafo, setParrafo] = useState("");
 
     useEffect(() => {
-        const json = localStorage.getItem("Comentarios");
+        const json = localStorage.getItem("Comentario");
         if (json) {
             const newComentario = JSON.parse(json);
             setComentario(newComentario);
@@ -25,7 +25,7 @@ const ComentCreator = () => {
         const nuevoComentario = { autor: Autor, parrafo: Parrafo };
         const newComentario = [...Comentario, nuevoComentario];
         setComentario(newComentario);
-        localStorage.setItem("Comentarios", JSON.stringify(newComentario)); // Aquí está el cambio
+        localStorage.setItem("Comentario", JSON.stringify(newComentario)); // Aquí está el cambio
         setAutor("");
         setParrafo("");
     }

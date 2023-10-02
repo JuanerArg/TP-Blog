@@ -8,8 +8,8 @@ function App() {
   const [id, setID] = useState(0);
 
   useEffect(() => {
-    const json = localStorage.getItem("Posts");
-    const jsonID = localStorage.getItem("Ids")
+    const json = localStorage.getItem("Post");
+    const jsonID = localStorage.getItem("Id");
     if (json && jsonID) {
       const newPost = JSON.parse(json);
       setPost(newPost);
@@ -25,10 +25,10 @@ function App() {
         <Link to="/PostCreator">Crear Post</Link>
       </button>
       <ul>
-        {Post.map((post, id) => (
+        {Post.map((Post, id) => (
           <Link to="/PostPage">
             <li key={id}>
-              <strong>{post.titulo}</strong>
+              <strong>{Post.titulo}</strong>
             </li>
           </Link>
         ))}
