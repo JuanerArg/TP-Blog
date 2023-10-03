@@ -5,31 +5,32 @@ import {useState, useEffect} from 'react'
 
 
 const PostPage = () =>{
-    let {id} = useParams();
+let {id} = useParams();
 
+const [posts, setPost] = useState([])
 
-    const [posts, setPost] = useState([])
+useEffect(() => {
+  let jsonPost = localStorage.getItem("posts")
+  if (jsonPost) {
+    let newPost = JSON.parse(jsonPost);
+    setPost(newPost);
+    console.log(newPost)
+    }
+  },[])
 
+  // En lugar de usar filter para encontrar el post por su índice, puedes usar find
+  let post = posts.find((elem, i) => i === parseInt(id)); // Parsea el id a un número entero
 
-    useEffect(() => {
-      let jsonPost = localStorage.getItem("posts")
-      if (jsonPost) {
-        let newPost = JSON.parse(jsonPost);
-        setPost(newPost);
-        console.log(newPost)
-        }
-      },[])
+  // Asegúrate de manejar el caso en que el post no se encuentre
+  if (!post) {
+    return <div>No se encontró el post</div>;
+  }
 
-
-      let post = posts.filter((elem, i) => i === id)
-      console.log(post[0])
-
-
-    return(
+  return(
         <>
-        <h1>{post[0].title}</h1>
-        <Markdown remarkPlugins={[remarkGfm]}>{post[0].paragraph}</Markdown>
+        <h1>{post.title}</h1>
+        <Markdown remarkPlugins={[remarkGfm]}>{post.paragraph}</Markdown>
         </>
-    )
+  )
 }
 export default PostPage
