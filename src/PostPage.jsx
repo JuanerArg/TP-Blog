@@ -1,22 +1,39 @@
 import { useParams } from "react-router-dom"
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
+import Coments from './CreateComent';
 
+const PostPage = () => {
+  let { id } = useParams();
+  const [posts, setPost] = useState([]);
+  const [coment, setComent] = useState('')
+  const [comentAuthor, setComentAuthor] = useState('')
 
-const PostPage = () =>{
-let {id} = useParams();
+  useEffect(() => {
+    // Traemos del localStorage el valor asociado a la clave
+    const jsonValue = localStorage.getItem("posts");
 
-const [posts, setPost] = useState([])
-
-useEffect(() => {
-  let jsonPost = localStorage.getItem("posts")
-  if (jsonPost) {
-    let newPost = JSON.parse(jsonPost);
-    setPost(newPost);
-    console.log(newPost)
+    if (jsonValue) {
+      // Parseamos el valor si existe y lo asignamos
+      const parsedValue = JSON.parse(jsonValue);
+      setPost(parsedValue);
+      console.log(parsedValue);
     }
-  },[])
+  }, []);
+
+
+  useEffect(() => {
+    // Traemos del localStorage el valor asociado a la clave
+    const jsonValue = localStorage.getItem("comentarios");
+
+    if (jsonValue) {
+      // Parseamos el valor si existe y lo asignamos
+      const parsedValue = JSON.parse(jsonValue);
+      setComent(parsedValue);
+      console.log(parsedValue);
+    }
+  }, []);
 
   // En lugar de usar filter para encontrar el post por su índice, puedes usar find
   let post = posts.find((elem, i) => i === parseInt(id)); // Parsea el id a un número entero
@@ -26,11 +43,17 @@ useEffect(() => {
     return <div>No se encontró el post</div>;
   }
 
-  return(
-        <>
-        <h1>{post.title}</h1>
-        <Markdown remarkPlugins={[remarkGfm]}>{post.paragraph}</Markdown>
-        </>
+  if (!coment) {
+    return <div>No se encontraron comentarios</div>
+  }
+
+  return (
+    <>
+      <h1>{post.title}</h1>
+      <h2>Author:{post.author}</h2>
+      <Markdown remarkPlugins={[remarkGfm]}>{post.paragraph}</Markdown>
+      <Coments />
+    </>
   )
 }
 export default PostPage
