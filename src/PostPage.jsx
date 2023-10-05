@@ -43,9 +43,6 @@ const PostPage = () => {
     return <div>No se encontró el post</div>;
   }
 
-  if (!coment) {
-    return <div>No se encontraron comentarios</div>
-  }
 
   return (
     <>
