@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 const CreatePost = () =>{
     const [title, setTitle] = useState('')
     const [paragraph, setParagraph] = useState('')
+    const [authorP, setAuthorP] = useState('')
     const [post, setPost] = useState([])
     const [comments, setComments] = useState([])
 
@@ -17,7 +18,7 @@ const CreatePost = () =>{
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        let input = { title: title, paragraph: paragraph };
+        let input = { author: authorP, title: title, paragraph: paragraph };
         let newPost = [...post, input];
 
         let newComment = [...comments, []];
@@ -30,17 +31,21 @@ const CreatePost = () =>{
 
         setParagraph('')
         setTitle('')
+        setAuthorP('')
     }
 
     return(
         <>
         <form onSubmit={handleSubmit}>
-            <input type="text" value={title} onChange={e => setTitle(e.target.value)}/>
+            <input type="text" value={authorP} onChange={e => setAuthorP(e.target.value)} placeholder='Author'/>
+            <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder='Title'/>
+        
             <textarea
               cols="30"
               rows="10"
               onChange={e => setParagraph(e.target.value)}
               value={paragraph}
+              placeholder='Paragraph'
             />
 
 

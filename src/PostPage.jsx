@@ -47,8 +47,14 @@ useEffect(() => {
         <Markdown remarkPlugins={[remarkGfm]}>{post.paragraph}</Markdown>
 
         <form onSubmit={handleSubmit}>
-                <input type="text" value={author} onChange={e => setAuthor(e.target.value)} />
-                <input type="text" value={text} onChange={e => setText(e.target.value)} />
+                <input type="text" value={author} onChange={e => setAuthor(e.target.value)} placeholder="Author"/>
+                <textarea
+                cols="30"
+                rows="10"
+                onChange={e => setText(e.target.value)}
+                value={text}
+                placeholder='Text'
+                />
                 <button type="submit">Create</button>
         </form>
 
@@ -56,7 +62,7 @@ useEffect(() => {
             {comments[parseInt(id)].map((elem, i) => (
                 <div key={i}>
                     <h2>{elem.author}</h2>
-                    <p>{elem.text}</p>
+                    <Markdown remarkPlugins={[remarkGfm]}>{elem.text}</Markdown>
                 </div>
             ))}
         <br></br>
