@@ -4,19 +4,30 @@ const CreatePost = () =>{
     const [title, setTitle] = useState('')
     const [paragraph, setParagraph] = useState('')
     const [post, setPost] = useState([])
+    const [comments, setComments] = useState([])
 
     useEffect(() => {
         let jsonPost = JSON.parse(localStorage.getItem('posts'))
+        let jsonComments = JSON.parse(localStorage.getItem('comments'))
+
         if (jsonPost) setPost(jsonPost)
+        if (jsonComments) setComments(jsonComments)
+
     },[])
 
     const handleSubmit = (e) =>{
         e.preventDefault()
         let input = { title: title, paragraph: paragraph };
         let newPost = [...post, input];
+
+        let newComment = [...comments, []];
+
         setPost(newPost);
+        setComments(newComment);
+
         localStorage.setItem('posts', JSON.stringify(newPost));
-        console.log(newPost)
+        localStorage.setItem('comments', JSON.stringify(newComment));
+
         setParagraph('')
         setTitle('')
     }
