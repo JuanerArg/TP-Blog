@@ -45,6 +45,7 @@ useEffect(() => {
         <>
         <h1>{post.title}</h1>
         <Markdown remarkPlugins={[remarkGfm]}>{post.paragraph}</Markdown>
+        <h3>{post.author}</h3>
 
         <form onSubmit={handleSubmit}>
                 <input type="text" value={author} onChange={e => setAuthor(e.target.value)} placeholder="Author"/>

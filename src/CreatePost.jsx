@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = () =>{
     const [title, setTitle] = useState('')
@@ -6,6 +7,7 @@ const CreatePost = () =>{
     const [authorP, setAuthorP] = useState('')
     const [post, setPost] = useState([])
     const [comments, setComments] = useState([])
+    const navigate = useNavigate();
 
     useEffect(() => {
         let jsonPost = JSON.parse(localStorage.getItem('posts'))
@@ -32,6 +34,7 @@ const CreatePost = () =>{
         setParagraph('')
         setTitle('')
         setAuthorP('')
+        navigate("/");
     }
 
     return(
