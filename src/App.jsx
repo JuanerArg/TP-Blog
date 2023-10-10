@@ -45,11 +45,19 @@ function App() {
     localStorage.setItem("comments", JSON.stringify(updatedComments));
   };
 
+  const toggleAdmin = () => {
+    setIsAdmin(!isAdmin);
+    localStorage.setItem("isAdmin", JSON.stringify(!isAdmin));
+  };
+
   useLocalStorage("posts");
 
   return (
     <>
-      {isAdmin && (<h1>Modo Admin</h1>)}
+      {isAdmin && (<>
+        <h1>Modo Admin</h1>
+        <button onClick={toggleAdmin}>Toggle Admin</button>
+      </>)}
       <Link to="/create">Create a Post</Link>
       <ul>
         {

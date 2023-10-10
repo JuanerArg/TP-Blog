@@ -1,10 +1,10 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 const Admin = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const contraseña = "1234";
     const [inputContraseña, setinputContraseña] = useState(0);
-
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -14,6 +14,7 @@ const Admin = () => {
             setIsAdmin(true);
             localStorage.setItem("isAdmin", JSON.stringify(true));
         } else { alert("Error"); }
+        navigate('/');
     }
 
 

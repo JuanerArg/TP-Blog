@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom"
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useState, useEffect } from 'react'
+import { Router, Route, Link, useParams } from 'react-router-dom';
 
 
 const PostPage = () => {
@@ -51,6 +51,9 @@ const PostPage = () => {
   return (
     <>
       {isAdmin && (<h1>Modo Admin</h1>)}
+      <Link to={`/`}>
+        <strong>Home</strong>
+      </Link>
       <h1>{post.title}</h1>
       <Markdown remarkPlugins={[remarkGfm]}>{post.paragraph}</Markdown>
       <h3>{post.author}</h3>
