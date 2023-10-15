@@ -5,9 +5,11 @@ const CreatePost = () => {
     const [title, setTitle] = useState('')
     const [paragraph, setParagraph] = useState('')
     const [authorP, setAuthorP] = useState('')
-    const [post, setPost] = useState([])
+    const [post, setPost] = useState([{ author: '', title: '', paragraph: '' }])
     const [comments, setComments] = useState([])
     const navigate = useNavigate();
+    let input = { author: authorP, title: title, paragraph: paragraph };
+
 
     useEffect(() => {
         let jsonPost = JSON.parse(localStorage.getItem('posts'))
@@ -20,21 +22,23 @@ const CreatePost = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        let input = { author: authorP, title: title, paragraph: paragraph };
-        let newPost = [...post, input];
+        if (input.title != '') {
+            let input = { author: authorP, title: title, paragraph: paragraph };
+            let newPost = [...post, input];
 
-        let newComment = [...comments, []];
+            let newComment = [...comments, []];
 
-        setPost(newPost);
-        setComments(newComment);
+            setPost(newPost);
+            setComments(newComment);
 
-        localStorage.setItem('posts', JSON.stringify(newPost));
-        localStorage.setItem('comments', JSON.stringify(newComment));
+            localStorage.setItem('posts', JSON.stringify(newPost));
+            localStorage.setItem('comments', JSON.stringify(newComment));
 
-        setParagraph('')
-        setTitle('')
-        setAuthorP('')
-        navigate("/");
+            setParagraph('')
+            setTitle('')
+            setAuthorP('')
+            navigate("/");
+        }
     }
 
     return (
@@ -50,9 +54,9 @@ const CreatePost = () => {
                     value={paragraph}
                     placeholder='Paragraph'
                 />
-
-
                 <button type="submit">Create</button>
+                {input.title === '' && (<p>Obligatorio: Complete el titulo</p>)}
+                {input.paragraph === '' && (<p>Obligatorio: Complete el texto</p>)}
             </form>
         </>
     )

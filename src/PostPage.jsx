@@ -27,17 +27,16 @@ const PostPage = () => {
     }
   }, [])
 
-  // En lugar de usar filter para encontrar el post por su índice, puedes usar find
-  let post = posts.find((elem, i) => i === parseInt(id)); // Parsea el id a un número entero
+  let post = posts.find((elem, i) => i === parseInt(id));
 
-  // Asegúrate de manejar el caso en que el post no se encuentre
   if (!post) {
     return <div>No se encontró el post</div>;
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let input = { author: author, text: text };
+    let authorName = author.trim() !== '' ? author : 'Anonimo'; // Si el autor está vacío, utiliza 'Anonimo'
+    let input = { author: authorName, text: text };
     let newComment = [...comments];
     newComment[parseInt(id)] = [...newComment[parseInt(id)], input]
     setComments(newComment);
@@ -46,7 +45,6 @@ const PostPage = () => {
     setAuthor('');
     setText('');
   }
-
 
   return (
     <>
@@ -81,4 +79,5 @@ const PostPage = () => {
     </>
   )
 }
-export default PostPage
+
+export default PostPage;
