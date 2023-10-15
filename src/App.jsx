@@ -69,7 +69,7 @@ function App() {
               {isAdmin && (
                 <>
                   <button onClick={() => handleDelete(i)}>Borrar</button>
-                  <button>Editar</button>
+                  <Link to={`/editor/${i}`}><button>Editar</button></Link>
                   {console.log("Hola")}
                 </>
               )}

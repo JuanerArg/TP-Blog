@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 const Admin = () => {
     const [isAdmin, setIsAdmin] = useState(false);
     const contraseña = "1234";
-    const [inputContraseña, setinputContraseña] = useState(0);
+    const [inputContraseña, setinputContraseña] = useState();
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {

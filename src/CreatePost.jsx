@@ -1,7 +1,7 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 
-const CreatePost = () =>{
+const CreatePost = () => {
     const [title, setTitle] = useState('')
     const [paragraph, setParagraph] = useState('')
     const [authorP, setAuthorP] = useState('')
@@ -16,9 +16,9 @@ const CreatePost = () =>{
         if (jsonPost) setPost(jsonPost)
         if (jsonComments) setComments(jsonComments)
 
-    },[])
+    }, [])
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault()
         let input = { author: authorP, title: title, paragraph: paragraph };
         let newPost = [...post, input];
@@ -37,23 +37,23 @@ const CreatePost = () =>{
         navigate("/");
     }
 
-    return(
+    return (
         <>
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={authorP} onChange={e => setAuthorP(e.target.value)} placeholder='Author'/>
-            <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder='Title'/>
-        
-            <textarea
-              cols="30"
-              rows="10"
-              onChange={e => setParagraph(e.target.value)}
-              value={paragraph}
-              placeholder='Paragraph'
-            />
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={authorP} onChange={e => setAuthorP(e.target.value)} placeholder='Author' />
+                <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder='Title' />
+
+                <textarea
+                    cols="30"
+                    rows="10"
+                    onChange={e => setParagraph(e.target.value)}
+                    value={paragraph}
+                    placeholder='Paragraph'
+                />
 
 
-            <button type="submit">Create</button>
-        </form>
+                <button type="submit">Create</button>
+            </form>
         </>
     )
 }
