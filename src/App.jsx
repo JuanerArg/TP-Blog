@@ -28,7 +28,7 @@ function App() {
 
     const timer = setTimeout(() => {
       setShowGif(false);
-    }, 3000);
+    }, 1250);
     
 
     return () => {
