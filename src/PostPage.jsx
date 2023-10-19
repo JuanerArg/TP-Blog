@@ -6,6 +6,7 @@ import './Posts.css'
 
 const PostPage = () => {
   let { id } = useParams();
+  const postId = parseInt(id); // Conversión de id a número entero
 
   const [posts, setPost] = useState([])
   const [comments, setComments] = useState([])
@@ -27,7 +28,7 @@ const PostPage = () => {
     }
   }, [])
 
-  let post = posts.find((elem, i) => i === parseInt(id));
+  let post = posts.find((elem, i) => i === postId);
 
   if (!post) {
     return <div>No se encontró el post</div>;
@@ -35,10 +36,16 @@ const PostPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let authorName = author.trim() !== '' ? author : 'Anonimo'; // Si el autor está vacío, utiliza 'Anonimo'
+    let authorName = author.trim() !== '' ? author : 'Anonimo';
     let input = { author: authorName, text: text };
+
     let newComment = [...comments];
-    newComment[parseInt(id)] = [...newComment[parseInt(id)], input]
+    if (newComment[postId]) {
+      newComment[postId] = [...newComment[postId], input];
+    } else {
+      newComment[postId] = [input];
+    }
+
     setComments(newComment);
     localStorage.setItem('comments', JSON.stringify(newComment));
     console.log(newComment);
@@ -50,45 +57,52 @@ const PostPage = () => {
     <>
       {isAdmin && (<h1>Modo Admin</h1>)}
       <button className='lol'>
-      <Link to={`/`}>
-        <strong>Home</strong>
-      </Link>
+        <Link to={`/`}>
+          <strong>Home</strong>
+        </Link>
       </button>
 
       <div className="container">
-      <h1>{post.title}</h1>
-      <div className="post-content">
-        <Markdown remarkPlugins={[remarkGfm]}>{post.paragraph}</Markdown>
-        <h3>{post.author}</h3>
-      </div>
+        <h1>{post.title}</h1>
+        <div className="post-content">
+          <Markdown remarkPlugins={[remarkGfm]}>{post.paragraph}</Markdown>
+          <h3>{post.author}</h3>
+        </div>
 
-      <form onSubmit={handleSubmit} className="form-container">
+        <form onSubmit={handleSubmit} className="form-container">
+          <input
+            type="text"
+            value={author}
+            onChange={e => setAuthor(e.target.value)}
+            placeholder="Author"
+            className="input-field"
+          />
 
-        <input type="text" value={author} onChange={e => setAuthor(e.target.value)} placeholder="Author" className="input-field" />
+          <textarea
+            cols="30"
+            rows="10"
+            onChange={e => setText(e.target.value)}
+            value={text}
+            placeholder='Comment'
+            className="input-field"
+          />
 
-        <textarea 
-        cols="30" 
-        rows="10" 
-        onChange={e => setText(e.target.value)} 
-        value={text} 
-        placeholder='Comment' 
-        className="input-field" 
-        />
+          <button type="submit" className="submit-button">Create</button>
+        </form>
 
-        <button type="submit" className="submit-button">Create</button>
+        <br />
 
-      </form>
+        {comments[postId] ? comments[postId].map((elem, i) => (
+          <div key={i} className="comment">
+            <h2>{elem.author}</h2>
+            <Markdown remarkPlugins={[remarkGfm]}>{elem.text}</Markdown>
+          </div>
+        )) : null}
 
-      <br></br>
-     {comments[parseInt(id)] ? comments[parseInt(id)].map((elem, i) => (
-  <div key={i} className="comment">
-    <h2>{elem.author}</h2>
-    <Markdown remarkPlugins={[remarkGfm]}>{elem.text}</Markdown>
-  </div>
-)) : null}
-      <br></br>
+        <br />
       </div>
     </>
   )
 }
-export default PostPage
+
+export default PostPage;
