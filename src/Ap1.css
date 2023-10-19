@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .post-content {
+    margin-bottom: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-field {
+    width: 250px;
+    margin: 10px;
+    box-shadow: 3px 3px 3px 3px rgba(58, 46, 22, 0.371);
+    border: none;
+    border-radius: 10px;
+    list-style-type: circle;
+    width: 400px;
+  }
+  
+  .submit-button {
+    margin-top: 10px;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: rgba(219, 162, 48, 0.371);
+    border: none;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+  }
+  
+  .comments-container {
+    margin-top: 10px;
+  }
+  
+  .comment {
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 2px rgba(48, 193, 219, 0.371);
+    border-radius: 10px;
+  }
+
+  .cambio {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #cd88d6a9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .editar {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #ddabe3a9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .title{
+    font-size: x-large;
+    color: rgb(230, 111, 234);
+    text-shadow: 2px 2px 4px rgba(165, 10, 142, 0.458);
+  }

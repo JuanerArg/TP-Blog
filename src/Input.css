@@ -1,0 +1,14 @@
+input {
+    margin: 10px;
+  }
+
+  .boton-estilo {
+    padding: 5px 5px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: rgba(51, 108, 119, 0.805);
+    border: none;
+    border-radius: 20px;
+    margin-top: 10px
+  }
+  

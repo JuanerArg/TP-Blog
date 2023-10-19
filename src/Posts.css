@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .post-content {
+    margin-bottom: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-field {
+    width: 250px;
+    margin: 10px;
+    box-shadow: 3px 3px 3px 3px rgba(58, 46, 22, 0.371);
+    border: none;
+    border-radius: 10px;
+    list-style-type: circle;
+    width: 400px;
+  }
+  
+  .submit-button {
+    margin-top: 10px;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: rgba(48, 173, 219, 0.371);
+    border: none;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+  }
+  .comments-container {
+    margin-top: 10px;
+  }
+  
+  .comment {
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 2px rgba(48, 193, 219, 0.371);
+    border-radius: 10px;
+  }
+
+  .lol {
+    margin-top: 10px;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: rgba(32, 141, 208, 0.371);
+    border: none;
+    color: #000;
+  }
