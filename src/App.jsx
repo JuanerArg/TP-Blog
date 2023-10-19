@@ -76,9 +76,9 @@ function App() {
 
       {showGif ? (
           <div className='centered-container'>
-          <h1>BIENVENIDO BIENVENIDO BIENVENIDO</h1>
-          <h1>BIENVENIDO BIENVENIDO</h1>
-          <h1>BIENVENIDO</h1>
+          <h4>BIENVENIDO BIENVENIDO BIENVENIDO</h4>
+          <h4>BIENVENIDO BIENVENIDO</h4>
+          <h4>BIENVENIDO</h4>
           <img className="small-gif" src="./gif2.gif" alt="GIF animado" />
           </div>
 
