@@ -80,12 +80,12 @@ const PostPage = () => {
       </form>
 
       <br></br>
-          {comments[parseInt(id)].map((elem, i) => (
-        <div key={i} className="comment">
-          <h2>{elem.author}</h2>
-          <Markdown remarkPlugins={[remarkGfm]}>{elem.text}</Markdown>
-        </div>
-      ))}
+     {comments[parseInt(id)] ? comments[parseInt(id)].map((elem, i) => (
+  <div key={i} className="comment">
+    <h2>{elem.author}</h2>
+    <Markdown remarkPlugins={[remarkGfm]}>{elem.text}</Markdown>
+  </div>
+)) : null}
       <br></br>
       </div>
     </>
