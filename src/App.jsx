@@ -79,13 +79,13 @@ function App() {
           <h4>BIENVENIDO BIENVENIDO BIENVENIDO</h4>
           <h4>BIENVENIDO BIENVENIDO</h4>
           <h4>BIENVENIDO</h4>
-          <img className="small-gif" src="./gif2.gif" alt="GIF animado" />
+          <img className="small-gif" src="/gif2.gif" alt="GIF animado" />
           </div>
 
       ) : null}
 
     <div className="header">
-    <img src="./logo.png" alt="Logo" width="200" height="135" />
+    <img src="/logo.png" alt="Logo" width="200" height="135" />
     </div>
     <div className= "fondo">
     <button className="create-post-button">
